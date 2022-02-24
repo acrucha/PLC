@@ -67,7 +67,7 @@ group (a:as) = count:group (resto)
 -- * Funções de Alta Ordem (map, fold, filter)
 -- é uma função/operador que recebe outra função como parâmetro ou gera uma função como resultado
 
-applyBinOper :: (t -> t -> t) -> t -> t -> t
+applyBinOper :: (t -> t -> t) -> t -> t -> t -- (t -> t -> t) => nessa parte é indicado os parâmetros e o resultado da lista de entrada
 applyBinOper f x y = f x y
 
 -- ? podemos usar funções de alta ordem para generalizar funções com o mesmo escopo mas que tem funções diferentes
@@ -98,6 +98,12 @@ pow n = n * n
 -- ? map snd [(7,1), (9,4), (5,3), (1,2)] = [1,4,3,2]
 -- ? map times2 [1..10] = [2,4,6,8,10,12,14,16,18,20]
 -- ? map pow [1..10] = [1,4,9,16,25,36,49,64,81,100]
+
+-- ! usando operadores:
+-- ? map (^2) [1,2,3] = [1,4,9]
+-- ? map (/2) [1,2,3] = [0.5,1.0,1.5]
+-- ? map (*2) [1,2,3] = [2,4,6]
+-- ? map (+5) [1,2,3] = [6,7,8]
 -}
 
 -- dado uma função qual é o máximo dela
@@ -110,8 +116,8 @@ vendas 1 = 15
 vendas 2 = 10
 vendas n = mod n 13
 
--- ! FOLD
--- pegar uma lista e ir combinando 2 a dois para gerar 1 resultado único
+-- ! FOLDING (redução/dobramento)
+-- * pega uma lista e vai combinando 2 a dois para gerar 1 resultado único
 
 fold :: (t -> t -> t) -> [t] -> t
 fold f [a] = a
@@ -122,3 +128,7 @@ sumList l = fold (+) l
 
 fatorial 0 = 1
 fatorial x = fold (*) [1..x]
+
+-- exemplo que já tem em haskell:
+-- and :: [Bool] -> Bool
+-- and l = fold (&&) l
