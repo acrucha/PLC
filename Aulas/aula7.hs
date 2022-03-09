@@ -1,3 +1,5 @@
+-- * ANOTAÇÕES AULA 7 - PLC
+
 -- ! FOLDR/FOLDL (biblioteca de haskell)
 -- habilita a escolha do caso base!!
 -- Definição:
