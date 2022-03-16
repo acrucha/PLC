@@ -58,8 +58,9 @@ mapTree2 f (Node2 subtree1 subtree2) = Node2 (mapTree2 f subtree1) (mapTree2 f s
 -- ? Nesse caso, ele calcula apenas os elementos necessários da lista para realizar a ação desejada (os 50 primeiros)
 -- ? Ou seja, o resto não precisa ser calculado.
 
--- ! CHAMADAS DE CAUDA
+-- ! CHAMADAS DE CAUDA (recursão de cauda)
 -- Ocorre quando o resultado da função é diretamente devolvido pela função que fez a chamada (recursividade).
+-- Vira praticamente um for => é mais otimizado => não é preciso voltar na função anterior de chamada para fazer algum cálculo complementar
 
 -- ? exemplo: Função fatorial de n
 fat n = tailFat n 1
