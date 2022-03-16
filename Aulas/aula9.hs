@@ -44,3 +44,28 @@ mapTree2 f (Node2 subtree1 subtree2) = Node2 (mapTree2 f subtree1) (mapTree2 f s
 
 -- sumOfTree :: Tree2 t -> Int
 -- sumOfTree t1 = foldr (+) 0 (collapse2 t1)
+
+-- ! LAZINESS
+-- * lazy evaluation -> avaliação de uma expressão se dá apenas quando seu valor é necessário
+-- Cálculo estrito (tradicional) x cálculo lazy => o cálculo lazy chega em mais resultados do que a avaliação estrita
+-- É possível trabalhar com valores em que há erros ou incompletos, já que só usará valores necessários no momento
+-- Os argumentos não precisam ser avaliados por completo => só o necessário é avaliado 
+-- Não faz múltiplas avaliações => portanto quando calculamos uma função com um parâmetro x, caso for necessário novamente
+-- o mesmo cálculo, o resultado é apenas reutilizado. 
+-- As expressões são usadas como grafos para gerar otimização => os resultados são compartilhados
+
+-- ? exemplo: take 50 [20..] => pega os 50 primeiros elementos de uma lista infinita començando por 20
+-- ? Nesse caso, ele calcula apenas os elementos necessários da lista para realizar a ação desejada (os 50 primeiros)
+-- ? Ou seja, o resto não precisa ser calculado.
+
+-- ! CHAMADAS DE CAUDA
+-- Ocorre quando o resultado da função é diretamente devolvido pela função que fez a chamada (recursividade).
+
+-- ? exemplo: Função fatorial de n
+fat n = tailFat n 1
+tailFat 0 x = x  
+tailFat n x = tailFat (n-1) (n*x) -- Retorna o fatorial de n multiplicado por x
+
+-- Assim, como não há empilhamento de stack frame por chamada, evitam estouros de pilha. 
+-- o GHC, por padrão, consegue transformar diversas chamadas comuns em chamadas de cauda.
+
