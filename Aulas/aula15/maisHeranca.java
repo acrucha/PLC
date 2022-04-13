@@ -25,13 +25,18 @@ public class maisHeranca {
 		ContaEspecial c2 = new ContaEspecial();
 		
 		bradesco.cadastrar(c);
+		bradesco.cadastrar(c1);
+		bradesco.cadastrar(c2);
 		
+		c1.creditar(50);
 		c2.creditar(100);
 		c2.renderBonus();
 		System.out.println("Saldo de c2: " + c2.getSaldo());
 		
 		tentaRenderJuros(c1);
-		tentaRenderJuros(c);
+		// tentaRenderJuros(c);
+		
+		bradesco.tranfere(c1.getNumero(), c2.getNumero(), 10);
 
 	}
 

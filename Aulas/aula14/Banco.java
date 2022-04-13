@@ -62,4 +62,22 @@ public class Banco {
 		
 		return 0;
 	};
+	
+	public void tranfere(String numeroC1, String numeroC2, double valor) {
+		Conta c1 = achaConta(numeroC1);
+		if(c1 == null) {
+			throw new RuntimeException("Não existe cadastrada conta com o número " + numeroC1);
+		}
+		Conta c2 = achaConta(numeroC2);
+		if(c2 == null) {
+			throw new RuntimeException("Não existe cadastrada conta com o número " + numeroC2);
+		}
+		if(c1.getSaldo() < valor) {
+			throw new RuntimeException("Foi mal tas pobre!");
+		}
+		c1.debitar(valor);
+		c2.creditar(valor);
+		
+		System.out.println("Transferência realizada com sucesso!");
+	}
 }
