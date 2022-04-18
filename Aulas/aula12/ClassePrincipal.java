@@ -24,7 +24,7 @@ public class ClassePrincipal {
             System.out.println(a);
         }
 
-        Conta c = new Conta();
+        Conta c = new Conta(str);
     
         c.printSaldo();
         c.creditar(15.66);

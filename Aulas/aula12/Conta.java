@@ -1,39 +1,19 @@
 package aula12;
 
-import java.util.Random;
+import aula16.ContaAbstrata;
 
-public class Conta {
-	private String numero;
-    private double saldo;
+public class Conta extends ContaAbstrata {
 
-    public Conta(){
-        Random rand = new Random();
-        numero = rand.nextInt(10, 99) + "." + rand.nextInt(999) + "-" + rand.nextInt(9);
-        saldo = 0;
-        System.out.println("Conta "+ numero + " criada!");
-    }
+    public Conta(String titular) {
+		super(titular, "Fácil");
+	}
 
-    public double getSaldo(){
-        return this.saldo;
-    }
-    
-    public String printSaldo() {
-    	String formatado = String.format("%.2f", this.saldo);
-    	return "Saldo: R$" + formatado;
-    }
-
-    public String getNumero(){
-        return this.numero;
-    }
-
-    public void creditar(double valor) {
-        //System.out.println("Creditando R$ " + valor + "...");
-        saldo = saldo + valor;
-        // printSaldo();
+	public void creditar(double valor) {
+        setSaldo(super.getSaldo() + valor);
     }
     
     public void debitar(double valor) {
-    	saldo = saldo - valor;
+    	setSaldo(super.getSaldo() - valor);
     }
     
     public void renderJuros(){}

@@ -5,7 +5,9 @@ import aula12.Conta;
 public class ContaEspecial extends Conta{
 	private double bonus;
 	
-	public ContaEspecial() {
+	public ContaEspecial(String titular) {
+		super(titular);
+		super.setTipo("Especial");
 		bonus = 0.0;
 	}
 	

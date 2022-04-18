@@ -17,12 +17,12 @@ public class maisHeranca {
 
 	public static void main(String[] args) {
 		
-		Banco bradesco = new Banco();
+		Banco bradesco = new Banco(10);
 		
 		
-		Conta c = new Conta();
-		ContaPoupanca c1 = new ContaPoupanca();
-		ContaEspecial c2 = new ContaEspecial();
+		Conta c = new Conta("Malu");
+		ContaPoupanca c1 = new ContaPoupanca("Clara");
+		ContaEspecial c2 = new ContaEspecial("Mileto");
 		
 		bradesco.cadastrar(c);
 		bradesco.cadastrar(c1);
