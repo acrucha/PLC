@@ -45,6 +45,7 @@ public class aulinha17 {
 		Produto p = produtos.procurar(p2.getCod());
 		
 		p = produtos.procurar(p1.getCod());
+		System.out.print(p);
 	}
 
 }
